@@ -1,1 +1,28 @@
-# Write your code here
+require 'pry'
+require 'net/http'
+require 'open-uri'
+require 'json'
+
+class GetRequester
+
+    def initialize(url)
+        @url = url
+    end
+
+    def get_response_body
+        uri = URI.parse(@url)
+        response = Net::HTTP.get_response(uri)
+        response.body
+    end
+
+    def parse_json
+        # new_array = get_response_body
+        # binding.pry
+        # new_array.json
+        response = JSON.parse(self.get_response_body)
+        # response.collect do |info|
+        # #     info["name"]
+        # end
+    end
+    
+end
